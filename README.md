@@ -1,7 +1,8 @@
+
 # cc4j-ui
 
 ## 简介
-	轻量、规范化、 UI组件库
+	基于vue的轻量的、规范化的、 前端UI组件库
 ## 安装下载
  * [release](https://github.com/cc-ui/cc-ui/releases)
 

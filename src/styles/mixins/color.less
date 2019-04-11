@@ -1,0 +1,67 @@
+//.color(@color; @background; @border) {
+//    color: @color;
+//    background-color: @background;
+//    border-color: @border;
+//    > a:only-child {
+//        color: currentColor;
+//        &:after {
+//            content: '';
+//            position: absolute;
+//            top: 0;
+//            left: 0;
+//            bottom: 0;
+//            right: 0;
+//            background: transparent;
+//        }
+//    }
+//}
+.loop-color(@class, @list, @i: 1) when(@i =< length(@list)){
+    @color-name: "@{val}-color";
+    @val: extract(@list, @i);
+    .@{class}text{
+        &-@{val} {
+            .color(@@color-name);
+        }
+    }
+    .loop-color(@class,@list,(@i+1));
+}
+.loop-background(@class, @list, @i: 1) when(@i =< length(@list)){
+    @name: extract(@list, @i);
+    @color-name: "@{name}-color";
+    .@{class}bg-@{name}{
+        //&-@{name}{
+        .background(@@color-name);
+        //}
+    }
+    .loop-background(@class,@list,(@i+1));
+}
+.loop-border(@class, @list, @i: 1) when(@i =< length(@list)){
+    @name: extract(@list, @i);
+    @color-name: "@{name}-color";
+    .@{class}bd-@{name}{
+        .border(@@color-name);
+    }
+    .loop-border(@class,@list,(@i+1));
+}
+
+.color(@color){
+    color: @color;
+    //> a:only-child {
+    //    color: currentColor;
+    //    &:after {
+    //        content: '';
+    //        position: absolute;
+    //        top: 0;
+    //        left: 0;
+    //        bottom: 0;
+    //        right: 0;
+    //        background: transparent;
+    //    }
+    //}
+}
+.background(@background){
+    background-color: @background;
+}
+.border(@border){
+    border-color: @border;
+}

@@ -1,0 +1,454 @@
+从零做一个开源项目
+什么是开源？
+    开源项目包含什么，开源软件并不是一堆源代码，如果仔细分析或者有亲身体会的话，包含内容还是比较多的，
+	1. 源码
+	2. 文档，如二次开发文档和用户文档
+	3. 开发环境，告诉二次开发者如何搭建和运行代码
+	4. 允许他人贡献代码而不是仅仅给别人阅读源码的权限
+	5. 问题，用户提问，维护者答复，问题共享（而不是私聊）
+	6. 问题列表和升级计划，记录当前问题，以及何时解决，何时升级
+
+其他配套设施
+	要做成一个成熟靠谱的开源软件产品，除了以上源码相关的方面，要需要配套的设施，才能完备（官网，demo，文档）
+	1.官网
+	2.文档
+	3.问答社区（github issue）
+	4. 及时交流社区，即QQ群，微信群
+
+为何做开源？
+    做开源不挣钱，这是确定的，但是为何要做开源，而且那么多人坚持做开源呢，他们不是完全为了兴趣爱好，完全下班没事干，人只要付出劳动、付出努力，就是本着目的性去的，有兴趣的原因，但是能让自己持之以恒做下去，肯定不是兴趣。原因有以下几点：
+	1. 全面提高编程能力：你需要从0打造，每部分代码都需要自己负责，不像在公司中的一颗螺丝钉。
+	2. 提高自己的社区知名度：github上的star能间接反应你的身价，他能让你得到业内认可。业内同行认可了，做啥事都好做，如内推工作。
+	3. 锻炼自己的产品意识：因为做开源的是产品，不再是单纯的技术活，UI、运维、推广、收集反馈、甚至成本预算，都要考虑。
+	4. 技术范儿、极客精神：作为一名程序猿，能业余打造一款开源产品是一件很帅的事情，满足自己的虚荣心。
+
+做什么？
+	迈出第一步，这是做开源要想到的第一件事情，很多想做开源的同学，到这一步就想不下去了，还有同学，一上来就定位太高，做着做着发现根本做不出来，就提前放弃了。
+不做什么
+	一些早期就知名的开源作品，
+	想要知道做什么，你就得先明白自己的期望，然后再去想做什么。
+		1。要快速做出第一版，至少能用，后面再慢慢迭代升级
+		2. 要能方便推广使用，最好是0成本使用。
+	做出来，退出去，要快，做得快别人用的也快。排除不做什么
+		1. 大型的框架，如做一个UI框架（短期做不完，使用成本高）
+		2. 模拟成熟轮子，如再造一个Jquery。
+		3.小众的东西，基本没人用
+		4.没有特色，100%模仿，用户没有更换的理由
+	做什么
+	排除以上这些，还剩下的范围就不做了，我推荐做开源产品的方向
+		1. 小而精的工具。开发快，使用成本低
+		2. 要有特色，哪怕是一个。要和别人不一样，差异化竞争
+		3. 一定要大众，50%以上的开发人员都会用到
+		4. 避开已经成熟产品垄断的领域，（jquery，vue，react）
+比较适合做开源的例子
+	1. cache工具（缓存工具，整合localStorage，以及合理的内存销毁机制）
+	2. query2json，解析url参数为json格式
+	3. 移动端打印console.log，方便移动端输出内容
+注册账号：
+
+    注意你如果现在已经有了github账号，很重要，你一旦注册一个github账号并且要去做开源产品，那你就要作为一个个人品牌持续运营下去，不能随便更改名字。
+    因此注册账号时，一定要慎重考虑，不能随便弄一个，做一段时间又想改。
+    组织还是个人，首先，你要明确你即将注册的账号时专门针对一个产品（即项目账号）还是将运维多个产品（即组织账号）
+
+    注册账号：
+    github和npm注册
+
+    GitHub 添加ssh key
+	    ssh-keygen
+	    pbcopy < ~/.ssh/id_rsa.pub
+    创建项目
+    clone 项目到本地
+    修改git账号
+    git config user.name ‘cc-ui’
+    git config user.email ‘ljw5203@126.com’
+
+搭建开发环境
+    nodejs在Mac下的卸载
+    卸载：
+
+    在 node 官网上下载的安装包，用安装包安装的node.应该可以用一下命令行卸载：
+
+    在终端输入以下命令：
+
+    sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+
+    删除/usr/local/lib中的所有node和node_modules
+    删除/usr/local/lib中的所有node和node_modules的文件夹
+    如果是从brew安装的, 运行brew uninstall node
+    检查~/中所有的local, lib或者include文件夹, 删除里面所有node和node_modules
+    在/usr/local/bin中, 删除所有node的可执行文件
+    最后运行以下代码:(可能具体安装路径会有区别 ,find ~ -name "node"   可以找到所有
+
+
+
+
+    sudo rm /usr/local/bin/npm
+    sudo rm /usr/local/share/man/man1/node.1
+    sudo rm /usr/local/lib/dtrace/node.d
+    sudo rm -rf ~/.npm
+    sudo rm -rf ~/.node-gyp
+    sudo rm /opt/local/bin/node
+    sudo rm /opt/local/include/node
+    sudo rm -rf /opt/local/lib/node_modules
+
+	确保已安装node npm
+		node -v
+		npm -v
+		npm install 增加 --unsafe-perm 配置解决权限问题
+		卸载node
+			sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+
+	npm init
+		name cc-ui
+		version：0.0.1
+		description:
+		keywords:
+		author: https://github.com/cc-ui
+
+	构建工具
+		安装插件
+			npm i babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-latest webpack webpack-cli --save-dev
+		-- 安装可以使用淘宝npm源
+			npm.taobao.
+			$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+		根目录下创建
+			.babelrc 文件，内容如下
+			{
+				"presets":["es2015","latest"],
+				"plugins":[]
+			}
+			创建webpack配置文件
+			webpack.config.js
+			修改package.json 终端scripts，
+				增加 release: 'webpack'
+        安装http-server(全局安装)
+	        npm install http-server -g
+
+规范一级目录
+	项目到一级目录要提前规范好，最起码一些常用的目录要提前定好留用，
+	src - 源代码
+	release - 发布结果
+	test - 单元测试用例
+	example - 示例
+	doc - 文档
+
+    mkdir src release test example doc
+写文档 & 写测试用例
+	在写文档之前，还需要准备其他工具。定位到项目目录下
+	安装gitbook，
+	    npm i gitbook-cli -g
+	    然后创建summary.md
+	    gitbook init (会看到各个文件本创建了，就可以完善各个文档的内容。)
+	    内容完成后，运行 gitbook build可以将md文件发布为html文件，默认放在——book文件夹。
+	    启动npm run example 之后可以访问效果
+	    然后再次修改README.md 把文档链接加上
+        .gitignore  添加 _book git忽略_book目录
+
+	注意，文档和测试用例对于一个开源产品来说非常重要，而且文档和测试用例本身就是代码不可分割的一部分。
+
+如何写测试用例？
+    需要用到其他工具，内容也相对独立，
+
+规范git分支
+    至少要存在两个分支，master和dev，dev是开发中的代码。当然你可以规范更多的分支，
+    例如：next fix-bug等，但是注意一个原则 -- 用不到的就不要规划。
+    git branch (查看分支）
+
+完善README.md
+    README是开源项目的一张脸，用户的第一印象。必须包含一下内容：
+        产品简介（此处要突出特点，打差异化竞争）
+        产品安装和下载
+        快速使用（详细的使用文档或者二次开发文档，外链即可）
+        交流 & 提问
+        关于作者
+        # name
+        ## 简介
+        ## 安装下载
+        ## 快速使用
+        — 使用文档
+        — 二次开发文档
+        ##交流 & 提问
+        ## 关于作者
+            个人地址
+            收款二维码
+
+提交代码：
+
+    写代码：
+        使用编码规范的工具，es-lint等，否则经过长时间的维护，必然留坑。
+    写文档 & 写测试用例
+    【注意】
+        文档和测试用例对于一个开源产品来说非常重要！
+        文档和测试用例本身就是代码不可分割的一部分。
+        如何写测试用例 -- ？？？
+    提交第一行代码
+        首先：提交代码到master
+        然后：创建tag并提交，代码如下
+            git tag -a 'v0.0.1' -m 'first commit'
+            git push origin v0.0.1
+            提交之后下载地址就有了，
+        接下来就要提交到npm，能让使用者通过npm进行安装。
+            首先：运行npm adduser 和npm login 来登录，根据提示将之前注册npm时到账号，密码，邮箱写上就行了
+            然后：在项目到根目录运行npm publish . ,此时问题来了，
+                运行之后报403错误
+                    npm中和其他项目重名了
+                    修改package.json中的名称修改，然后再次发布
+            发布之后就可以访问npm项目主页了。
+            【注意】
+            为项目取名时，一定要提前把名字在github和npm搜索一下确认没有重名；
+创建官网
+    通过github pages创建官网
+
+    cp -r ./_book ../fast-cache.github.io
+
+如何宣传
+    一个公司的核心竞争力，一是技术，而是营销
+    因此虽然是一个简单的开源项目，宣传也是必须必要的。
+    宣传和更新维护都是一个漫长的过程，我们能做的只能是坚持
+
+    写博客
+    首先，要围绕你做到产品功能来写博客，
+        我们可以写类似的博客，分体分两类，
+            第一类是相关的技术干货文章，
+            第二类是产品介绍，应该以第一类为主
+
+            总结如何做前端缓存
+            前端缓存的坑，-- 教训和经验
+            预防前端内存泄漏
+            前端缓存插件fast-cache使用总结
+            fast-cache开发半年记
+            。。。
+            其次，要正确选择发表的网站
+                建议：
+                    选择一个地方作为你博客的唯一主页，例如github，像创建官网一样，创建一个个人博客网站。
+                    博客贴到各大博客网站
+                        掘金，知乎专栏，博客园，
+                    博客内容要写明白原文的链接，并写明产权。
+                    最好能找到一些媒体（infoQ）或者大牛公众号帮你转发。
+    回答相关问题
+        去知乎，sf。gg甚至是stackoverflow上去搜索，关注你的产品相关的问题，积极参与回答，回答问题也有技巧
+            字数只能多不能少，最好图文并茂，还能讲个笑话
+            回答要专业，经过亲自测试，不要想当然的瞎猜
+            回答问题的最后，顺便推广自己的产品
+    口碑宣传
+        所谓口碑宣传就是让用户自愿的帮助宣传，那就需要把产品做好，那如何做好呢？
+            明确产品定位，【有特色】做【T】型产品差异化竞争。把一方面做好就行了，所有都做好不可能。
+            及时回复问题，定期更新升级，做好升级计划，让用户看到产品在不断进步和变化。
+    持续迭代
+        主要来探讨一下如何有效率的持续迭代，再不影响工作、生活的情况下。
+
+    统一问题收集区
+        这一点非常重要
+            你没有那么多精力去很多个平台回复问题
+            你没有那么多时间天天盯着QQ群解答问题
+            问题应该被集中起来，供使用着反复查询
+        问题应该被分享而不是私聊，因此如下提问方式直接忽略：
+            QQ群提问和QQ私聊提问（微信）
+            私信提问
+            邮件提问
+        定期答复和升级
+            让别人自愿、积极的去提交issue的前提是你能及时答复。
+                【定期回复】每天看看issues然后先答复，临时无法高清楚的就回复周末时看下再答复，这样每天大约话费5-15分钟即可，最后，需要修改的问题记录下来
+                【定期升级】每周拿出2小数，改多少算多少，改不完下周再说，改完问题要及时回复issue并close。
+        学会拒绝
+            当用户慢慢增多，用户会提出各种看似奇葩的需求，以满足他们自己的使用需要。此时就需要你来分辨改需求是否应该被添加。
+            【总结判断标准】
+                很多用户都提过这个需求，即大众需求
+                判断这个需求对大部分用户都有用
+                该需求符合产品定位及产品发展的方向
+                该需求能抹平和竞品的差距，或者和竞品差异化竞争
+             符合以上要求的，可以加入升级计划，不符合要求的，一定要无情拒绝，此时不要做好人。
+        持之以恒
+            做任何事情，没点持之以恒的态度，都做不成功
+总结：
+    做开源的意义，
+    开源项目是什么？
+    做什么？
+    怎么做
+    宣传和持续迭代
+
+【下面开始创作我的组件库】
+    我们搭建一套基于Vue的组件库，需要准备一系列环境，首先我们要考虑一下问题：
+    脚手架如何搭建
+    如何规划目录结构
+    如何编写文档
+    【首先】对于脚手架环境的问题，目前已经有非常成熟的vue官方的脚手架，我们拿来用就好了
+        // npm uninstall vue-cli -g 卸载vue
+        # 全局安装 vue-cli
+        $ npm install --global vue-cli
+        # 创建一个基于 webpack 模板的新项目
+        $ vue init webpack my-project
+        # 安装依赖，走你
+        $ cd my-project
+        $ npm install
+        $ npm run dev
+    【接着】我们看第二个问题，如何规划好我们组建的目录结构？
+        首先我们需要有一个目录存放组件，有一个目录存放示例。所以我们要对vue-cli 生成的项目结构做一下改造：
+        |-- examples      // 原 src 目录，改成 examples 用作示例展示
+        |-- packages      // 新增 packages 用于编写存放组件
+    这样的话 我们需要再把我们webpack配置文件稍作一下调整，
+        首先是把原先的编译指向src的目录改成examples，
+        其次为了 npm run build 能正常编译
+        packages 我们也需要为 babel-loader 再增加一个编译目录：
+
+        {
+           test: /\.js$/,
+           loader: 'babel-loader',
+           include: [resolve('examples'), resolve('test'), resolve('packages')]
+        }
+        这样我们搭建起来一个简易的目录结构。
+    紧接着我们需要考虑如何编写文档。
+        对于文档的编写，自然是markdown最合适不过了，那么怎么让我们在vue下可以去写 markdown 文档呢？
+        答案当然是 vue-markdown-loader。
+        然后我们按照文档配置了相关的插件信息：
+        rules: [
+           {
+             test: /\.md$/,
+             loader: 'vue-markdown-loader'
+           }
+         ]
+         好了，我们可以开始尝试写文档了，在 example/docs 目录下新建 test.md。
+         # test
+         > Hello World
+         同时创建一个新的路由，指向我们的md文件：
+         {
+           path: '/test',
+           name: 'test',
+           component: r => require.ensure([], () => r(require('../docs/test.md')))
+         }
+        打开我们的浏览器http://localhost:8080/#/test 哈哈 真的成功了。
+        别高兴的太早.... 问题还在后面：我们期望的文档不仅能编译markdown，
+        而且最好能识别demo代码块一方面做演示，一方面可以显示演示代码最好了，就像这样：
+        那我们需要怎么做呢？
+            vue-mark-down 功能肯定不止这些！于是我们继续阅读它的文档，发现其实他就是封装了 markdown-it，支持 options 选项。
+            这样我们就可以为我们的markdown定义独特的标识符，这里我用 demo 标识需要显示代码块的地方，所以我需要配置options 选项 ：
+            const vueMarkdown = {
+              preprocess: (MarkdownIt, source) => {
+                MarkdownIt.renderer.rules.table_open = function () {
+                  return '<table class="table">'
+                }
+                MarkdownIt.renderer.rules.fence = utils.wrapCustomClass(MarkdownIt.renderer.rules.fence)
+                return source
+              },
+              use: [
+                [MarkdownItContainer, 'demo', {
+                  // 用于校验包含demo的代码块
+                  validate: params => params.trim().match(/^demo\s*(.*)$/),
+                  render: function(tokens, idx) {
+
+                    var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
+
+                    if (tokens[idx].nesting === 1) {
+                      var desc = tokens[idx + 2].content;
+                      // 编译成html
+                      const html = utils.convertHtml(striptags(tokens[idx + 1].content, 'script'))
+                      // 移除描述，防止被添加到代码块
+                      tokens[idx + 2].children = [];
+
+                      return `<demo-block>
+                                    <div slot="desc">${html}</div>
+                                    <div slot="highlight">`;
+                    }
+                    return '</div></demo-block>\n';
+                  }
+                }]
+              ]
+            }
+            这里简单的描述一下这段代码是干什么的：首先把内容里面vue片段编译成html，用于显示，另一方面用highlight来高亮代码块。
+            demo-block本身是我们定义好的组件：
+                <template>
+                  <div class="docs-demo-wrapper">
+                      <div :style="{maxHeight: isExpand ? '700px' : '0'}" class="demo-container">
+                        <div span="14">
+                          <div class="docs-demo docs-demo--expand">
+                            <div class="highlight-wrapper">
+                              <slot name="highlight"></slot>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <span
+                           class="docs-trans docs-demo__triangle"
+                           @click="toggle">{{isExpand ? '隐藏代码' : '显示代码'}}</span>
+                  </div>
+                </template>
+
+            这样，我们的 test.md 便可以这么去写了：
+
+【如何编写组件】
+    环境准备完毕，紧接着要开始编写组件，考虑的是组件库，
+    所以我们竟可能让我们的组件支持全局引入和按需引入，如果全局引入，
+    那么所有的组件需要要注册到Vue component 上，并导出：
+        const install = function(Vue) {
+          if (install.installed) return;
+          components.map(component => Vue.component(component.name, component));
+        };
+
+        export default {
+          install
+        };
+
+    接着要实现按需加载，我们只需要单个导出组件即可：
+        //
+        import Button from './button/index.js';
+        import Row from './row/index'
+        import Col from './col/index'
+
+        const components = [
+          Button,
+          Row,
+          Col
+        ];
+
+        const install = function(Vue) {
+          if (install.installed) return;
+          components.map(component => Vue.component(component.name, component));
+        };
+
+        if (typeof window !== 'undefined' && window.Vue) {
+          install(window.Vue);
+        }
+
+        export default {
+          install,
+          Button,
+          Row,
+          Col
+        };
+    其次，我们还需要考虑一个问题：
+        既然是单页面应用，必然要去解决样式冲突问题，如果组件内使用soped，那么样式就无法从组件内抽离出来，达不到可定制化主题颜色的目的。
+        我们需要一套可以分离处理的样式，可以自行编译，可以相互不污染。这时候css 的BEM规范就显得尤为重要。
+        如果你还不知道什么是BEM 参考：http://www.w3cplus.com/css/css-architecture-1.html
+        说到这里，目前对BEM规范支持较好的插件就是postcss了，他允许我们配置BEM之间的连接符和缩写：
+            {
+              "browsers": ["ie > 8", "last 2 versions"],
+              "features": {
+                "bem": {
+                  "shortcuts": {
+                    "component": "b",
+                    "modifier": "m",
+                    "descendent": "e"
+                  },
+                  "separators": {
+                    "descendent": "__",
+                    "modifier": "--"
+                  }
+                }
+              }
+            }
+        这样我们就可以把样式单独的抽离出来，通过gulp进行打包编译：
+            最后生成我们的样式代码。
+            import VVUI from '../packages/index'
+            import '../packages/theme-default/lib/index.css'
+
+            Vue.use(VVUI)
+            一切显得那么美好....
+            优化与不足
+
+            组件导出代码暂不支持自动化生成：比如我们的组件index文件，每次添加组件都需要不断地改写，我们2*
+            可以尝试进行webpack配置，npm run dev 的时候自动进行组件检测，然后帮我们写好导出代码。
+            目录结构划分缺陷：目前所有内容仅支持中文，如果想要做到支持国际化，那么还需要重新调整目录结构。
+            发布tag： 需要编写脚本支持tag发布
+            组件太少：文档刚写，组件还不是很多，慢慢去维护，相信会越来越多的组件，做业务的过程中也可以把常用的组件加进去，这样更加方便自己以后的维护和学习
+
+

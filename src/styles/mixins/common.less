@@ -1,0 +1,43 @@
+// padding快捷布丁
+.generate-padding(@n,@step:2, @i: 0) when (@i =< @n){
+    .@{prefix}p@{i} {
+        padding: (1px * @i);
+    }
+    .generate-padding(@n, @step, (@i + @step));
+}
+// top内快捷布丁
+.generate-padding-top(@n, @step:2, @i: 0) when (@i =< @n){
+    .@{prefix}pt@{i} {
+        padding-top: (1px * @i);
+    }
+    .generate-padding-top(@n, @step, (@i + @step));
+}
+// 右内快捷布丁
+.generate-padding-right(@n, @step:2, @i: 0) when (@i =< @n){
+    .@{prefix}pr@{i} {
+        padding-right: (1px * @i);
+    }
+    .generate-padding-right(@n, @step, (@i + @step));
+}
+// left内快捷布丁
+.generate-padding-left(@n, @step:2, @i: 0) when (@i =< @n){
+    .@{prefix}pl@{i} {
+        padding-left: (1px * @i);
+    }
+    .generate-padding-left(@n, @step, (@i + @step));
+}
+// bottom内快捷布丁
+.generate-padding-bottom(@n, @step:2, @i: 0) when (@i =< @n){
+    .@{prefix}pb@{i} {
+        padding-bottom: (1px * @i);
+    }
+    .generate-padding-bottom(@n, @step, (@i + @step));
+}
+// right and left 内快捷布丁
+.generate-padding-right-left(@n, @step:2, @i: 0) when (@i =< @n) {
+    .@{prefix}prl@{i} {
+        padding-right: (1px * @i);
+        padding-left: (1px * @i);
+    }
+    .generate-padding-right-left(@n, @step, (@i + @step));
+}

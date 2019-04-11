@@ -1,0 +1,182 @@
+/*!
+common.less
+*/
+@prefix: ~ "@{css-prefix}";
+.@{prefix}relative {
+    position: relative;
+}
+
+.@{prefix}absolute {
+    position: absolute;
+}
+
+.@{prefix}fixed {
+    position: fixed;
+}
+
+.@{prefix}fl {
+    float: left;
+}
+
+.@{prefix}fr {
+    float: right;
+}
+
+.@{prefix}pull-right {
+    float: right !important;
+}
+
+.@{prefix}pull-left {
+    float: left !important;
+}
+
+.@{prefix}none {
+    display: none !important;
+}
+
+.@{prefix}hide {
+    display: none !important;
+}
+
+.@{prefix}show {
+    display: block !important;
+}
+
+.@{prefix}block {
+    display: block !important;
+}
+
+.@{prefix}inline {
+    display: inline !important;
+}
+
+.@{prefix}inline-block {
+    display: inline-block !important;
+}
+
+.@{prefix}clear {
+    &after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+
+.@{prefix}pointer {
+    cursor: pointer;
+}
+
+.@{prefix}disabled, [disabled] {
+    cursor: not-allowed;
+}
+
+.@{prefix}strong,
+.@{prefix}b {
+    font-weight: bold !important;
+}
+
+.@{prefix}ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.@{prefix}ellipsis-1,
+.@{prefix}ellipsis-2 {
+    display: -webkit-box;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.@{prefix}ellipsis-2 {
+    -webkit-line-clamp: 2;
+}
+
+.@{prefix}clip {
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.@{prefix}nowrap {
+    white-space: nowrap !important;
+}
+
+.@{prefix}wrap {
+    white-space: normal !important;
+}
+
+.@{prefix}breakword {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.@{prefix}tac {
+    text-align: center;
+}
+
+.@{prefix}tal {
+    text-align: left;
+}
+
+.@{prefix}tar {
+    text-align: right;
+}
+
+.@{prefix}justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.@{prefix}vam {
+    vertical-align: middle;
+}
+
+.@{prefix}vat {
+    vertical-align: top;
+}
+
+.@{prefix}vab {
+    vertical-align: bottom;
+}
+
+.@{prefix}full {
+    height: 100%;
+    width: 100%;
+}
+
+.@{prefix}full-width {
+    width: 100%;
+}
+
+.@{prefix}full-height {
+    height: 100%;
+}
+
+.@{prefix}unselect {
+    user-select: none;
+}
+
+.@{prefix}indent {
+    text-indent: 2em;
+}
+
+.@{prefix}unindent {
+    text-indent: 0;
+}
+
+.@{prefix}clearfix {
+    .clearfix
+}
+
+.generate-padding(@pudding-size, @pudding-step);
+.generate-padding-top(@pudding-size, @pudding-step);
+.generate-padding-right(@pudding-size, @pudding-step);
+.generate-padding-left(@pudding-size, @pudding-step);
+.generate-padding-bottom(@pudding-size, @pudding-step);
+.generate-padding-right-left(@pudding-size, @pudding-step);
+
+
+
+
